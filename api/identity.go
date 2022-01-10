@@ -1,4 +1,4 @@
-package identity_model_go
+package identity
 
 // ***********  SCHEMES  ***********
 
