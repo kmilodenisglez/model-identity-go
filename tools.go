@@ -48,7 +48,6 @@ const (
 // It only returns an error when an invalid algorithm is used. The valid ones
 // are SHA256
 func Checksum(algorithm string, data []byte) (checksum string, err error) {
-	// default
 	var _hash hash.Hash
 	switch strings.ToUpper(algorithm) {
 	case HashSha256:
