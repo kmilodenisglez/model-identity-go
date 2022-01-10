@@ -1,6 +1,6 @@
 # model-identity-go
 
-The main goal with this repo is to share common data transfer object / structs definitions for other repos of the fuel traceability project.
+The main goal with this repo is to share common data transfer object / structs definitions for other repos of the identity project.
 
 _technology_
 
