@@ -10,9 +10,10 @@ type ParticipantGetRequest struct {
 // ParticipantCreateRequest
 type ParticipantCreateRequest struct {
 	Did        string   `json:"did"`
+	PublicKey  string   `json:"publicKey"`
 	IssuerID   string   `json:"issuerID,omitempty" metadata:",optional"`
 	CreatorDid string   `json:"creatorDid,omitempty" metadata:",optional"` // creator did, "empty if is SelfParticipant"
-	CertPem    string   `json:"certPem"`
+	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`
 	Roles      []string `json:"roles,omitempty" metadata:",optional"` // role id list
 }
 
