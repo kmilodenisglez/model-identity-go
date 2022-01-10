@@ -1,4 +1,4 @@
-package mod
+package identity_model_go
 
 // ***********  SCHEMES  ***********
 
