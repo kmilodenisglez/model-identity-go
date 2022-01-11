@@ -13,8 +13,8 @@ type ParticipantCreateRequest struct {
 	PublicKey  string   `json:"publicKey"`
 	IssuerID   string   `json:"issuerID,omitempty" metadata:",optional"`
 	CreatorDid string   `json:"creatorDid,omitempty" metadata:",optional"` // creator did, "empty if is SelfParticipant"
-	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`
-	Roles      []string `json:"roles,omitempty" metadata:",optional"` // role id list
+	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`    // PEM certificate in base64
+	Roles      []string `json:"roles,omitempty" metadata:",optional"`      // role id list
 }
 
 // ParticipantDeleteRequest
@@ -32,7 +32,7 @@ type ParticipantResponse struct {
 
 // ParticipantDeletedPayload
 type ParticipantDeletedPayload struct {
-	MspId    string `json:"mspId"`    // mspId of the invoking client
+	MspID    string `json:"mspID"`    // mspID of the invoking client
 	Time     string `json:"time"`     // exact time when the operation is confirmed
 	CallerID string `json:"callerID"` // participant ID that invokes the tx
 }
