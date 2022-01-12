@@ -1,5 +1,7 @@
 package identity
 
+import "fmt"
+
 // Issuer are the companies issuer certs and attributes in the network
 type Issuer struct {
 	DocType     string            `json:"docType"` // docType is used to distinguish the various types of objects in state database
@@ -47,4 +49,32 @@ type Participant struct {
 	ExpiresTime string            `json:"expiresTime"`
 	Active      bool              `json:"active"`
 	MspID       string            `json:"mspID"` // MSP ID of the client
+}
+
+// attrContains returns true if the named attribute is found
+func (p *Participant) attrContains(name string) bool {
+	_, ok := p.AttrsExtras[name]
+	return ok
+}
+
+// attrValue returns an attribute's value
+func (p *Participant) attrValue(name string) (string, bool, error) {
+	attr, ok := p.AttrsExtras[name]
+	return attr, ok, nil
+}
+
+// attrValueTrue returns nil if the value of attribute 'name' is true;
+// otherwise, an appropriate error is returned.
+func (p *Participant) attrValueTrue(name string) error {
+	val, ok, err := p.attrValue(name)
+	if err != nil {
+		return err
+	}
+	if !ok {
+		return fmt.Errorf("attribute '%s' was not found", name)
+	}
+	if val != "true" {
+		return fmt.Errorf("attribute '%s' is not true", name)
+	}
+	return nil
 }
