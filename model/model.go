@@ -78,3 +78,14 @@ func (p *Participant) attrValueTrue(name string) error {
 	}
 	return nil
 }
+
+type Attrs struct {
+	Name               string `json:"name"`
+	DNI                string `json:"dni"`
+	Company            string `json:"company"`
+	Position           string `json:"position"`
+	Country            string `json:"country"`
+	Province           string `json:"province"`
+	Locality           string `json:"locality"`
+	OrganizationalUnit string `json:"organizationalUnit"`
+}

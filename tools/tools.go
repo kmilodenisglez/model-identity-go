@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"github.com/golang/protobuf/ptypes/timestamp"
+	identity "github.com/ic-matcom/model-identity-go/model"
 	"hash"
 	"regexp"
 	"strings"
@@ -62,17 +63,6 @@ func Checksum(algorithm string, data []byte) (checksum string, err error) {
 	return str, nil
 }
 
-type Attrs struct {
-	Name               string `json:"name"`
-	DNI                string `json:"dni"`
-	Company            string `json:"company"`
-	Position           string `json:"position"`
-	Country            string `json:"country"`
-	Province           string `json:"province"`
-	Locality           string `json:"locality"`
-	OrganizationalUnit string `json:"organizationalUnit"`
-}
-
 var (
 	oidUserDNI = []int{0, 9, 2342, 19200300, 100, 1, 1}
 )
@@ -87,8 +77,8 @@ var (
 //  - Locality
 //  - Province
 //
-func GetAttrsCert(cert *x509.Certificate) Attrs {
-	attrs := Attrs{
+func GetAttrsCert(cert *x509.Certificate) identity.Attrs {
+	attrs := identity.Attrs{
 		Name:               cert.Subject.CommonName,
 		Country:            GetFirstElem(cert.Subject.Country),
 		Company:            GetFirstElem(cert.Subject.Organization),
@@ -103,7 +93,7 @@ func GetAttrsCert(cert *x509.Certificate) Attrs {
 }
 
 // FillFromParsedCert to extract non-standard or others attributes
-func FillFromParsedCert(cert *x509.Certificate, attrs *Attrs) {
+func FillFromParsedCert(cert *x509.Certificate, attrs *identity.Attrs) {
 	// reading the OID from list of unparsed objects from Subject
 	for _, n := range cert.Subject.Names {
 		t := n.Type
@@ -126,4 +116,3 @@ func GetFirstElem(arr []string) string {
 	}
 	return ""
 }
-
