@@ -8,6 +8,7 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	identity "github.com/ic-matcom/model-identity-go/model"
 	"hash"
+	"reflect"
 	"regexp"
 	"strings"
 	"time"
@@ -115,4 +116,41 @@ func GetFirstElem(arr []string) string {
 		return arr[0]
 	}
 	return ""
+}
+
+// GetTransactions returns callables functions of Contract
+// used to populate ContractFunctions field in identity:Access
+//
+// Arguments:
+//		0: contract ContractInterface
+// Returns:
+//		0: []string
+func GetTransactions(contract interface{}) []string {
+	avoidMap := map[string]string{"": "", "GetTransactionContextHandler": "", "InitLedger": "", "GetBeforeTransaction": "", "GetAfterTransaction": "", "GetIgnoredTransaction": "", "GetUnknownTransaction": ""}
+	fooType := reflect.TypeOf(contract)
+	var methods = make([]string, 0)
+	for i := 0; i < fooType.NumMethod(); i++ {
+		methodName := fooType.Method(i).Name
+		_, exists := avoidMap[methodName]
+		if !exists && !strings.Contains(methodName, "OnlyDev") {
+			methods = append(methods, methodName)
+		}
+	}
+
+	return UniqueStrings(methods)
+}
+
+// UniqueStrings returns a copy if the passed slice with only unique string results.
+func UniqueStrings(input []string) []string {
+	unique := make([]string, 0, len(input))
+	m := make(map[string]bool, len(unique))
+
+	for _, val := range input {
+		if _, ok := m[val]; !ok {
+			m[val] = true
+			unique = append(unique, val)
+		}
+	}
+
+	return unique
 }
