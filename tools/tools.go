@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-func CheckDid(did string) error {
+func MatchDidFormat(did string) error {
 	// check the did format
 	if matched, _ := regexp.MatchString(`^did:`, did); !matched {
 		return fmt.Errorf("the did format not match")
@@ -22,9 +22,10 @@ func CheckDid(did string) error {
 	return nil
 }
 
-func CreateDid(hash string) (string, error) {
-	did := fmt.Sprintf("did:%s", hash)
-	if err := CheckDid(did); err != nil {
+func CreateDid(publicKey string) (string, error) {
+	checksum, _ := Checksum(HashSha256, []byte(publicKey))
+	did := fmt.Sprintf("did:%s", checksum)
+	if err := MatchDidFormat(did); err != nil {
 		return "", fmt.Errorf("error generating the DID")
 	}
 	return did, nil
