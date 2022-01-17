@@ -21,28 +21,17 @@ type TransactionD struct {
 	Document  string `json:"document"`
 }
 
-type ParticipantRichQuerySelector struct {
+type RichQuerySelector struct {
 	Selector struct {
-		DocType   string `json:"docType"`
-		ID        string `json:"id,omitempty" metadata:",optional"`  // participant id: used in the composite key to store the participant in the ledger
-		Did       string `json:"did,omitempty" metadata:",optional"` // "did:hash_public_key"
-		PublicKey string `json:"publicKey,omitempty" metadata:",optional"`
-		Active    bool   `json:"active,omitempty" metadata:",optional"`
+		DocType string                 `json:"docType"`
+		Payload map[string]interface{} `json:"payload,omitempty" metadata:",optional"`
 	} `json:"selector"`
-}
-
-type IssuerRichQuerySelector struct {
-	Selector struct {
-		DocType string `json:"docType"`
-		ID      string `json:"id,omitempty" metadata:",optional"` // participant id: used in the composite key to store the participant in the ledger
-		Name    string `json:"name,omitempty" metadata:",optional"`
-		Active  bool   `json:"active,omitempty" metadata:",optional"`
-	} `json:"selector"`
+	UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
 }
 
 // PaginatedQueryResponse structure used for returning paginated query results and metadata
 type PaginatedQueryResponse struct {
-	Records             []interface{} `json:"records"`
-	FetchedRecordsCount int32          `json:"fetchedRecordsCount"`
-	Bookmark            string         `json:"bookmark"`
+	Records             []interface{} `json:"records"` // fabric-contract-api-go not support return []*interfaces{} type
+	FetchedRecordsCount int32         `json:"fetchedRecordsCount"`
+	Bookmark            string        `json:"bookmark"`
 }

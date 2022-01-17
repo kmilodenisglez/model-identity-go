@@ -27,3 +27,13 @@ type IssuerHistoryQueryResponse struct {
 	Time     string               `json:"time"`
 	IsDelete bool                 `json:"isDelete"`
 }
+
+type IssuerRichQuerySelector struct {
+	Selector struct {
+		DocType string `json:"docType"`
+		ID      string `json:"id,omitempty" metadata:",optional"` // participant id: used in the composite key to store the participant in the ledger
+		Name    string `json:"name,omitempty" metadata:",optional"`
+		Active  bool   `json:"active,omitempty" metadata:",optional"`
+	} `json:"selector"`
+	UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
+}
