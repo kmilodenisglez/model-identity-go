@@ -25,6 +25,7 @@ type ParticipantDeleteRequest struct {
 // ParticipantResponse
 type ParticipantResponse struct {
 	Did     string                    `json:"did"`
+	ID      string                    `json:"id"`
 	Roles   []string                  `json:"roles,omitempty" metadata:",optional"`   // role id
 	Creator *ParticipantCreateRequest `json:"creator,omitempty" metadata:",optional"` // creator, "empty if is SelfParticipant"
 }
