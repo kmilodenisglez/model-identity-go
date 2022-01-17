@@ -9,7 +9,6 @@ type ParticipantGetRequest struct {
 
 // ParticipantCreateRequest
 type ParticipantCreateRequest struct {
-	Did        string   `json:"did"`
 	PublicKey  string   `json:"publicKey"`
 	IssuerID   string   `json:"issuerID,omitempty" metadata:",optional"`
 	CreatorDid string   `json:"creatorDid,omitempty" metadata:",optional"` // creator did, "empty if is SelfParticipant"
