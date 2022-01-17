@@ -39,3 +39,10 @@ type IssuerRichQuerySelector struct {
 		Active  bool   `json:"active,omitempty" metadata:",optional"`
 	} `json:"selector"`
 }
+
+// PaginatedQueryResponse structure used for returning paginated query results and metadata
+type PaginatedQueryResponse struct {
+	Records             []*interface{} `json:"records"`
+	FetchedRecordsCount int32          `json:"fetchedRecordsCount"`
+	Bookmark            string         `json:"bookmark"`
+}

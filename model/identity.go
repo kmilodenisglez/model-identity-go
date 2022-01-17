@@ -52,10 +52,3 @@ type ParticipantHistoryQueryResponse struct {
 	Time     string                    `json:"time"`
 	IsDelete bool                      `json:"isDelete"`
 }
-
-// PaginatedQueryResponse structure used for returning paginated query results and metadata
-type PaginatedQueryResponse struct {
-	Records             []*ParticipantResponse `json:"records"`
-	FetchedRecordsCount int32                  `json:"fetchedRecordsCount"`
-	Bookmark            string                 `json:"bookmark"`
-}
