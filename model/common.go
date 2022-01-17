@@ -22,11 +22,8 @@ type TransactionD struct {
 }
 
 type RichQuerySelector struct {
-	Selector struct {
-		DocType string                 `json:"docType"`
-		Payload map[string]interface{} `json:"payload,omitempty" metadata:",optional"`
-	} `json:"selector"`
-	UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
+	Selector map[string]interface{} `json:"selector"`
+	UseIndex []string               `json:"use_index,omitempty" metadata:",optional"`
 }
 
 // PaginatedQueryResponse structure used for returning paginated query results and metadata
