@@ -36,4 +36,6 @@ type IssuerRichQuerySelector struct {
 		Active  bool   `json:"active,omitempty" metadata:",optional"`
 	} `json:"selector"`
 	UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
+	PageSize int      `json:"pageSize,omitempty" metadata:",optional"`
+	Bookmark string   `json:"bookmark,omitempty" metadata:",optional"`
 }
