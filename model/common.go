@@ -27,9 +27,9 @@ type QueryPaginator struct {
 }
 
 type RichQuerySelector struct {
-	Selector map[string]interface{} `json:"selector"`
-	PageSize int                    `json:"pageSize,omitempty" metadata:",optional"`
-	Bookmark string                 `json:"bookmark,omitempty" metadata:",optional"`
+	QueryString map[string]interface{} `json:"queryString"`
+	PageSize    int                    `json:"pageSize,omitempty" metadata:",optional"`
+	Bookmark    string                 `json:"bookmark,omitempty" metadata:",optional"`
 }
 
 // PaginatedQueryResponse structure used for returning paginated query results and metadata
