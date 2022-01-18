@@ -22,7 +22,7 @@ type TransactionD struct {
 }
 
 type QueryPaginator struct {
-	PageSize int    `json:"pageSize,omitempty" metadata:",optional"`
+	PageSize int    `json:"pageSize"`
 	Bookmark string `json:"bookmark,omitempty" metadata:",optional"`
 }
 
