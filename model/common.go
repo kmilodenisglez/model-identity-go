@@ -21,6 +21,11 @@ type TransactionD struct {
 	Document  string `json:"document"`
 }
 
+type QueryPaginator struct {
+	PageSize int    `json:"pageSize,omitempty" metadata:",optional"`
+	Bookmark string `json:"bookmark,omitempty" metadata:",optional"`
+}
+
 type RichQuerySelector struct {
 	Selector map[string]interface{} `json:"selector"`
 	UseIndex []string               `json:"use_index,omitempty" metadata:",optional"`
