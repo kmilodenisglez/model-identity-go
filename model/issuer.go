@@ -30,12 +30,12 @@ type IssuerHistoryQueryResponse struct {
 
 type IssuerRichQuerySelector struct {
 	Selector struct {
-		DocType string `json:"docType"`
-		ID      string `json:"id,omitempty" metadata:",optional"` // participant id: used in the composite key to store the participant in the ledger
-		Name    string `json:"name,omitempty" metadata:",optional"`
-		Active  bool   `json:"active,omitempty" metadata:",optional"`
+		DocType  string   `json:"docType"`
+		ID       string   `json:"id,omitempty" metadata:",optional"` // participant id: used in the composite key to store the participant in the ledger
+		Name     string   `json:"name,omitempty" metadata:",optional"`
+		Active   bool     `json:"active,omitempty" metadata:",optional"`
+		UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
 	} `json:"selector"`
-	UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
-	PageSize int      `json:"pageSize,omitempty" metadata:",optional"`
-	Bookmark string   `json:"bookmark,omitempty" metadata:",optional"`
+	PageSize int    `json:"pageSize,omitempty" metadata:",optional"`
+	Bookmark string `json:"bookmark,omitempty" metadata:",optional"`
 }

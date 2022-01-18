@@ -55,13 +55,13 @@ type ParticipantHistoryQueryResponse struct {
 
 type ParticipantRichQuerySelector struct {
 	Selector struct {
-		DocType   string `json:"docType"`
-		ID        string `json:"id,omitempty" metadata:",optional"`  // participant id: used in the composite key to store the participant in the ledger
-		Did       string `json:"did,omitempty" metadata:",optional"` // "did:hash_public_key"
-		PublicKey string `json:"publicKey,omitempty" metadata:",optional"`
-		Active    bool   `json:"active,omitempty" metadata:",optional"`
+		DocType   string   `json:"docType"`
+		ID        string   `json:"id,omitempty" metadata:",optional"`  // participant id: used in the composite key to store the participant in the ledger
+		Did       string   `json:"did,omitempty" metadata:",optional"` // "did:hash_public_key"
+		PublicKey string   `json:"publicKey,omitempty" metadata:",optional"`
+		Active    bool     `json:"active,omitempty" metadata:",optional"`
+		UseIndex  []string `json:"use_index,omitempty" metadata:",optional"`
 	} `json:"selector"`
-	UseIndex []string `json:"use_index,omitempty" metadata:",optional"`
-	PageSize int      `json:"pageSize,omitempty" metadata:",optional"`
-	Bookmark string   `json:"bookmark,omitempty" metadata:",optional"`
+	PageSize int    `json:"pageSize,omitempty" metadata:",optional"`
+	Bookmark string `json:"bookmark,omitempty" metadata:",optional"`
 }
