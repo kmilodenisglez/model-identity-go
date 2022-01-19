@@ -27,7 +27,7 @@ type QueryPaginator struct {
 }
 
 type RichQuerySelector struct {
-	QueryString map[string]interface{} `json:"queryString,omitempty" metadata:",optional"`
+	QueryString map[string]interface{} `json:"queryString"`
 	PageSize    int                    `json:"pageSize"`
 	Bookmark    string                 `json:"bookmark,omitempty" metadata:",optional"`
 }
