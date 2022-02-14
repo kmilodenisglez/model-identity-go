@@ -7,14 +7,30 @@ type GetRequest struct {
 
 // Transaction typical transaction structure
 type Transaction struct {
-	ID        string `json:"id"` // user id or did
-	Signature string `json:"signature"`
-	Payload   string `json:"payload"`
+	ID        string                 `json:"id"` // user id or did
+	Signature string                 `json:"signature"`
+	Payload   map[string]interface{} `json:"payload"`
 }
 
 // TransactionD transaction definition with document field. Useful for Tx that involve
 // document as part of the business process
 type TransactionD struct {
+	ID        string                 `json:"id"` // user id or did
+	Signature string                 `json:"signature"`
+	Payload   map[string]interface{} `json:"payload"`
+	Document  string                 `json:"document"`
+}
+
+// _Transaction typical transaction structure
+type _Transaction struct {
+	ID        string `json:"id"` // user id or did
+	Signature string `json:"signature"`
+	Payload   string `json:"payload"`
+}
+
+// _TransactionD transaction definition with document field. Useful for Tx that involve
+// document as part of the business process
+type _TransactionD struct {
 	ID        string `json:"id"` // user id or did
 	Signature string `json:"signature"`
 	Payload   string `json:"payload"`
