@@ -8,10 +8,10 @@ type ParticipantGetRequest struct {
 
 type ParticipantCreateRequest struct {
 	DID        string   `json:"did,omitempty" metadata:",optional"`
-	PublicKey  string   `json:"publicKey"`
+	PublicKey  string   `json:"publicKey,omitempty" metadata:",optional"` // if omitted it must be obtained from the cert
 	IssuerID   string   `json:"issuerID,omitempty" metadata:",optional"`
 	CreatorDid string   `json:"creatorDid,omitempty" metadata:",optional"` // creator did, "empty if is SelfParticipant"
-	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`    // PEM certificate in base64, used only to store participant attributes
+	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`    // PEM certificate in base64, used to get publicKey and to store participant attributes
 	Roles      []string `json:"roles,omitempty" metadata:",optional"`      // role id list
 }
 
