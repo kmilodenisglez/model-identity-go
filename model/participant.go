@@ -16,12 +16,13 @@ type ParticipantCreateRequest struct {
 }
 
 type ParticipantUpdateRequest struct {
-	DID        string   `json:"did,omitempty" metadata:",optional"`
-	PublicKey  string   `json:"publicKey,omitempty" metadata:",optional"`
-	IssuerID   string   `json:"issuerID,omitempty" metadata:",optional"`
-	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`    // PEM certificate in base64, used only to store participant attributes
-	Roles      []string `json:"roles,omitempty" metadata:",optional"`      // role id list
-	Metadata   map[string]interface{}
+	DID       string   `json:"did,omitempty" metadata:",optional"`
+	PublicKey string   `json:"publicKey,omitempty" metadata:",optional"`
+	IssuerID  string   `json:"issuerID,omitempty" metadata:",optional"`
+	CertPem   string   `json:"certPem,omitempty" metadata:",optional"` // PEM certificate in base64, used only to store participant attributes
+	Roles     []string `json:"roles,omitempty" metadata:",optional"`   // role id list
+	Active    bool     `json:"active,omitempty" metadata:",optional"`
+	Metadata  map[string]interface{}
 }
 
 type ParticipantDeleteRequest struct {
