@@ -2,12 +2,10 @@ package identity
 
 // ***********  SCHEMES  ***********
 
-// ParticipantGetRequest
 type ParticipantGetRequest struct {
 	Did string `json:"did"`
 }
 
-// ParticipantCreateRequest
 type ParticipantCreateRequest struct {
 	DID        string   `json:"did,omitempty" metadata:",optional"`
 	PublicKey  string   `json:"publicKey"`
@@ -17,13 +15,20 @@ type ParticipantCreateRequest struct {
 	Roles      []string `json:"roles,omitempty" metadata:",optional"`      // role id list
 }
 
-// ParticipantDeleteRequest
+type ParticipantUpdateRequest struct {
+	DID        string   `json:"did,omitempty" metadata:",optional"`
+	PublicKey  string   `json:"publicKey,omitempty" metadata:",optional"`
+	IssuerID   string   `json:"issuerID,omitempty" metadata:",optional"`
+	CertPem    string   `json:"certPem,omitempty" metadata:",optional"`    // PEM certificate in base64, used only to store participant attributes
+	Roles      []string `json:"roles,omitempty" metadata:",optional"`      // role id list
+	Metadata   map[string]interface{}
+}
+
 type ParticipantDeleteRequest struct {
 	UserDid   string `json:"userDid"`
 	CallerDid string `json:"callerDid"` // caller DID
 }
 
-// ParticipantResponse
 type ParticipantResponse struct {
 	Did     string                    `json:"did"`
 	ID      string                    `json:"id"`
@@ -31,14 +36,12 @@ type ParticipantResponse struct {
 	Creator *ParticipantCreateRequest `json:"creator,omitempty" metadata:",optional"` // creator, "empty if is SelfParticipant"
 }
 
-// ParticipantDeletedPayload
 type ParticipantDeletedPayload struct {
 	MspID    string `json:"mspID"`    // mspID of the invoking client
 	Time     string `json:"time"`     // exact time when the operation is confirmed
 	CallerID string `json:"callerID"` // participant ID that invokes the tx
 }
 
-// ParticipantQueryResponse
 type ParticipantQueryResponse struct {
 	ParticipantID string   `json:"participantID"`
 	Did           string   `json:"did"`
