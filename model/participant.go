@@ -30,8 +30,7 @@ type ParticipantDeleteRequest struct {
 }
 
 type ParticipantResponse struct {
-	Did     string                    `json:"did"`
-	ID      string                    `json:"id"`
+	DID     string                    `json:"did"`
 	Roles   []string                  `json:"roles,omitempty" metadata:",optional"`   // role id
 	Creator *ParticipantCreateRequest `json:"creator,omitempty" metadata:",optional"` // creator, "empty if is SelfParticipant"
 }
@@ -60,8 +59,7 @@ type ParticipantHistoryQueryResponse struct {
 type ParticipantRichQuerySelector struct {
 	Selector struct {
 		DocType   string   `json:"docType"`
-		ID        string   `json:"id,omitempty" metadata:",optional"`  // participant id: used in the composite key to store the participant in the ledger
-		Did       string   `json:"did,omitempty" metadata:",optional"` // "did:hash_public_key"
+		DID       string   `json:"did,omitempty" metadata:",optional"` // participant id
 		PublicKey string   `json:"publicKey,omitempty" metadata:",optional"`
 		Active    bool     `json:"active,omitempty" metadata:",optional"`
 		UseIndex  []string `json:"use_index,omitempty" metadata:",optional"`

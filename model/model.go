@@ -36,8 +36,7 @@ type Role struct {
 // The Participant Identity asset
 type Participant struct {
 	DocType     string            `json:"docType"` // docType is used to distinguish the various types of objects in state database
-	ID          string            `json:"id"`      // participant id: used in the composite key to store the participant in the ledger
-	Did         string            `json:"did"`     // "did:hash_public_key"
+	Did         string            `json:"did"`     // participant id
 	PublicKey   string            `json:"publicKey"`
 	IssuerID    string            `json:"issuerId"`                               // issuer id
 	Creator     string            `json:"creator,omitempty" metadata:",optional"` // Participant ID that created the identity, "empty if is SelfParticipant"
