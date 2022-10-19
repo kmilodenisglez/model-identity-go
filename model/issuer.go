@@ -1,6 +1,5 @@
 package identity
 
-// IssuerCreateRequest
 type IssuerCreateRequest struct {
 	Name      string `json:"name,omitempty" metadata:",optional"` // can be obtained directly from the certificate "CommonName"
 	CertPem   string `json:"certPem"`                             // issuer PEM certificate in base64
@@ -8,7 +7,6 @@ type IssuerCreateRequest struct {
 	ByDefault bool   `json:"byDefault,omitempty" metadata:",optional"`
 }
 
-// IssuerQueryResponse
 type IssuerQueryResponse struct {
 	ID          string            `json:"id"`
 	Name        string            `json:"name"`

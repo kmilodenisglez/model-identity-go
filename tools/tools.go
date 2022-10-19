@@ -5,8 +5,8 @@ import (
 	"crypto/x509"
 	"encoding/hex"
 	"fmt"
-	"github.com/golang/protobuf/ptypes/timestamp"
-	identity "github.com/ic-matcom/model-identity-go/model"
+	identity "github.com/kmilodenisglez/model-identity-go/model"
+	"google.golang.org/protobuf/types/known/timestamppb"
 	"hash"
 	"reflect"
 	"regexp"
@@ -31,7 +31,7 @@ func CreateDid(publicKey string) (string, error) {
 	return did, nil
 }
 
-func GetTimestampRFC3339(timestamp *timestamp.Timestamp) string {
+func GetTimestampRFC3339(timestamp *timestamppb.Timestamp) string {
 	tm := time.Unix(timestamp.Seconds, int64(timestamp.Nanos))
 	return tm.Format(time.RFC3339)
 }

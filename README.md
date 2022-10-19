@@ -17,24 +17,7 @@ _misc_
 ![](https://img.shields.io/badge/reposize-0MB-inactive?style=flat)
 
 
-## 📑 Including "model-identity-go" as go module into another project's source code.
-Since the "model-identity-go" module is in the "**ic-matcom**" private github repository, several previous steps
-must be carried out.
-
-#### 1. Set GOPRIVATE in a environment like below: 
-
+#### Import the module
 ```bash
-go env -w GOPRIVATE=github.com/ic-matcom
-```
-❗ Multiple values are separated by a comma.
-
-#### 2. Passing repository credentials to Go module
-```bash
-git config --global url."https://username:accessToken_or_Password@github.com".insteadOf "https://github.com"
-```
-❗ If your user has any @ change to %40. This type of special strings must be url encoded.
-
-#### 3. Finally, we import the module
-```bash
-go get github.com/ic-matcom/model-identity-go
+go get github.com/kmilodenisglez/model-identity-go
 ```

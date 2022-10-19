@@ -1,12 +1,10 @@
 package identity
 
-// RoleCreateRequest
 type RoleCreateRequest struct {
 	Name              string   `json:"name"`
 	ContractFunctions []string `json:"contractFunctions,omitempty"` // contract functions
 }
 
-// RoleUpdateRequest
 type RoleUpdateRequest struct {
 	ID                string   `json:"id"`
 	Name              string   `json:"name"`

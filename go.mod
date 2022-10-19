@@ -1,5 +1,5 @@
-module github.com/ic-matcom/model-identity-go
+module github.com/kmilodenisglez/model-identity-go
 
 go 1.16
 
-require github.com/golang/protobuf v1.5.2
+require google.golang.org/protobuf v1.28.1
